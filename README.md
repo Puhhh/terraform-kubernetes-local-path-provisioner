@@ -1,22 +1,56 @@
-# How to use
+<!-- BEGIN_TF_DOCS -->
+## Requirements
 
-* Change S3 values 
+No requirements.
 
-```bash
-terraform init
-```
-```bash
-terraform plan
-```
-```bash
-terraform apply
-```
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_helm"></a> [helm](#provider\_helm) | 2.14.0 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.31.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [helm_release.local-path-provisioner](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [kubernetes_namespace.local-path-provisioner-namespace](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_helm-chart-name"></a> [helm-chart-name](#input\_helm-chart-name) | Helm Chart Name | `string` | `"local-path-provisioner"` | no |
+| <a name="input_helm-chart-repo"></a> [helm-chart-repo](#input\_helm-chart-repo) | Helm Chart Repo | `string` | `"https://puhhh.github.io/pages-helm-repo/"` | no |
+| <a name="input_helm-chart-version"></a> [helm-chart-version](#input\_helm-chart-version) | Helm Chart Version | `string` | `"0.0.28"` | no |
+| <a name="input_helm-custom-values"></a> [helm-custom-values](#input\_helm-custom-values) | Use Helm Custom Values | `bool` | `false` | no |
+| <a name="input_helm-custom-values-path"></a> [helm-custom-values-path](#input\_helm-custom-values-path) | Helm Custom Values Path | `string` | `"values.yaml"` | no |
+| <a name="input_helm-name"></a> [helm-name](#input\_helm-name) | Helm Release Name | `string` | `"local-path-provisioner"` | no |
+| <a name="input_kubeconfig-path"></a> [kubeconfig-path](#input\_kubeconfig-path) | Kubeconfig Path | `string` | `"~/.kube/config"` | no |
+| <a name="input_local-path-provisioner-namespace"></a> [local-path-provisioner-namespace](#input\_local-path-provisioner-namespace) | Local Path Provisioner Namespace | `string` | `"local-path-provisioner"` | no |
+| <a name="input_namespace-labels"></a> [namespace-labels](#input\_namespace-labels) | Namespace Labels | `map(string)` | <pre>{<br>  "pod-security.kubernetes.io/enforce": "privileged"<br>}</pre> | no |
+
+## Outputs
+
+No outputs.
+<!-- END_TF_DOCS -->
+
+## How to use
+
+Change S3 values 
 
 ## Optional 
 
-* If you need to change the default values of variables, add them to the *terraform.tfvars* file.
-* If the value of *helm-custom-values* is *true*, *values.yaml* will be used. You can modify *values.yaml*.
-* If 
+If you need to change the default values of variables, add them to the *terraform.tfvars* file.
+
+If the value of *helm-custom-values* is *true*, *values.yaml* will be used. You can modify *values.yaml*.
+
+If 
 ```YAML
 storageclass:
   defaultClass: true
