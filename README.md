@@ -29,7 +29,7 @@ No modules.
 | <a name="input_helm-chart-repo"></a> [helm-chart-repo](#input\_helm-chart-repo) | Helm Chart Repo | `string` | `"https://puhhh.github.io/pages-helm-repo/"` | no |
 | <a name="input_helm-chart-version"></a> [helm-chart-version](#input\_helm-chart-version) | Helm Chart Version | `string` | `"0.0.28"` | no |
 | <a name="input_helm-custom-values"></a> [helm-custom-values](#input\_helm-custom-values) | Use Helm Custom Values | `bool` | `false` | no |
-| <a name="input_helm-custom-values-path"></a> [helm-custom-values-path](#input\_helm-custom-values-path) | Helm Custom Values Path | `string` | `"values.yaml"` | no |
+| <a name="input_helm-custom-values-path"></a> [helm-custom-values-path](#input\_helm-custom-values-path) | Helm Custom Values Path | `string` | `""` | no |
 | <a name="input_helm-name"></a> [helm-name](#input\_helm-name) | Helm Release Name | `string` | `"local-path-provisioner"` | no |
 | <a name="input_kubeconfig-path"></a> [kubeconfig-path](#input\_kubeconfig-path) | Kubeconfig Path | `string` | `"~/.kube/config"` | no |
 | <a name="input_local-path-provisioner-namespace"></a> [local-path-provisioner-namespace](#input\_local-path-provisioner-namespace) | Local Path Provisioner Namespace | `string` | `"local-path-provisioner"` | no |
@@ -39,23 +39,3 @@ No modules.
 
 No outputs.
 <!-- END_TF_DOCS -->
-
-## How to use
-
-Change S3 values 
-
-## Optional 
-
-If you need to change the default values of variables, add them to the *terraform.tfvars* file.
-
-If the value of *helm-custom-values* is *true*, *values.yaml* will be used. You can modify *values.yaml*.
-
-If 
-```YAML
-storageclass:
-  defaultClass: true
-```
-doesn't work then try
-```bash
-kubectl patch storageclass local-path-provisioner -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
-```

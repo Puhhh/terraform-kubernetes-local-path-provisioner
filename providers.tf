@@ -8,12 +8,6 @@ terraform {
       source = "hashicorp/helm"
     }
   }
-
-  backend "s3" {
-    bucket = "terraform-kubernetes-puhhh-s3"
-    key    = "test/local-path-provisioner/terraform.tfstate"
-    region = "eu-north-1"
-  }
 }
 
 provider "kubernetes" {
