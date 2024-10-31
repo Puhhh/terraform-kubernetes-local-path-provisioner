@@ -30,12 +30,6 @@ variable "helm-name" {
   default     = "local-path-provisioner"
 }
 
-variable "helm-chart-name" {
-  description = "Helm Chart Name"
-  type        = string
-  default     = "local-path-provisioner"
-}
-
 variable "helm-chart-repo" {
   description = "Helm Chart Repo"
   type        = string

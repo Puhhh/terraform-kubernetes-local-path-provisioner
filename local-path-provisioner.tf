@@ -8,7 +8,7 @@ resource "kubernetes_namespace" "local-path-provisioner-namespace" {
 resource "helm_release" "local-path-provisioner" {
   namespace  = kubernetes_namespace.local-path-provisioner-namespace.metadata[0].name
   name       = var.helm-name
-  chart      = var.helm-chart-name
+  chart      = var.helm-chart-repo
   repository = var.helm-chart-repo
   version    = var.helm-chart-version
 
